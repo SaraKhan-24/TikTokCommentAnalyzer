@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Scanner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 p-6">
+
+    <div class="max-w-6xl mx-auto bg-white p-6 rounded shadow mb-6">
+        <h2 class="text-xl font-bold mb-4">Configuration</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <input type="text" id="urlInput" placeholder="TikTok URL" class="border p-2 rounded">
+            <input type="text" id="keywordsInput" placeholder="Keywords (e.g. price, quality)" class="border p-2 rounded">
+            <div class="flex gap-2">
+                <button onclick="startScan()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 flex-1">
+                    Start Scan
+                </button>
+                <button onclick="refreshData()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 flex-1">
+                    Fetch New
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white p-4 rounded shadow">
+                <p class="text-gray-500 text-xs uppercase">Total Scanned</p>
+                <h3 class="text-2xl font-bold" id="totalCount">0</h3>
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+                <p class="text-gray-500 text-xs uppercase">Batch Size</p>
+                <h3 class="text-2xl font-bold" id="batchCount">0</h3>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 rounded shadow lg:col-span-2">
+            <h3 class="font-bold mb-4">Trend Velocity</h3>
+            <canvas id="trendChart"></canvas>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+            <h3 class="font-bold mb-4">Keyword Totals</h3>
+            <canvas id="barChart"></canvas>
+        </div>
+
+        <div class="bg-white p-4 rounded shadow lg:col-span-3">
+            <h3 class="font-bold mb-2">Comment Feed</h3>
+            <div id="feed" class="h-64 overflow-y-auto bg-gray-50 p-4 border rounded"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
